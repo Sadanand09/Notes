@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import mongoose, {Schema, model} from 'mongoose';
+import mongoose from 'mongoose';
+import Note from './models/Note';
 import dotenv from 'dotenv';
 dotenv.config(); 
 
@@ -17,14 +18,7 @@ connectDB();
 
 const PORT = 5000;
 
-const noteSchema = new Schema({
-    title: String,
-    content: String,
-    category: String
-    
-})
 
-const Note = model("Note", noteSchema);
 
 
 app.get('/health', (req, res)=>{
@@ -38,6 +32,28 @@ app.get('/health', (req, res)=>{
 
 app.post('/notes', async(req, res)=> {
     const{title, content, category} = req.body;
+
+    if(!title){
+        return res.json({
+            success: false,
+            message: "Title is required",
+            data: null
+        })
+    }
+    if(!content){
+        return res.json({
+            success: false,
+            message: "Content is required",
+            data: null
+        })
+    }
+    if(!category){
+        return res.json({
+            success: false,
+            message: "Category is required",
+            data: null
+        })
+    }
 
     const newNote = await Note.create({
 
@@ -69,9 +85,7 @@ app.get('/notes', async(req, res)=>{
 app.get('/notes/:id', async(req, res)=>{
     const {id} = req.params;
 
-    const note = await Note.findOne({
-        _id: id
-    })
+    const note = await Note.findById(id);
 
     res.json({
         success: true,
