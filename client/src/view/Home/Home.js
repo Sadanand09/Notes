@@ -7,7 +7,7 @@ function Home() {
 
     const loadNotes = async ()=>{
 
-        const response = await axios.get(`${process.enc.REACT_APP_API_URL}/notes`)
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/notes`)
         setNotes(response.data.data);
 
 
