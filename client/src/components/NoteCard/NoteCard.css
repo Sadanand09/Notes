@@ -27,8 +27,17 @@
 }
 
 .delete-icon{
-    height: 40px;
+    height: 30px;
     position: absolute;
     right: 30px;
     bottom: 10px;
+}
+
+.update-icon{
+
+    height: 30px;
+    position: absolute;
+    right: 70px;
+    bottom: 8px;
+
 }

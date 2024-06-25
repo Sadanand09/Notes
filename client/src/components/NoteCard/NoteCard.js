@@ -1,29 +1,36 @@
 import React from 'react'
-import axios from 'axios'
 import './NoteCard.css'
-import img from './delete.png'
+import DeleteIcon from "./delete.png"
+import UpdateIcon from "./edit.png"
+import axios from 'axios'
 import toast from 'react-hot-toast'
+import { Link } from 'react-router-dom'
 
-function NoteCard({ _id, title, content, category }) {
+function NoteCard({ _id, title, content, category, loadNotes }) {
 
-    const deleteNote = async ()=>{
-        const response = await axios.delete(`${process.env.REACT_APP_API_URL}/notes/${_id}`)
-        toast.success(response.data.message)
-        
-    }
+  const deleteNote = async () => {
+    const response = await axios.delete(`${process.env.REACT_APP_API_URL}/notes/${_id}`)
+    toast.success(response.data.message)
+    loadNotes()
+  }
 
-    return (
-        <div>
-            <div className='note-card'>
+  return (
+    <div className='note-card'>
+      <h3 className='note-card-title'>{title}</h3>
+      <p className='note-card-content'>{content}</p>
+      <span className='note-card-category'>{category}</span>
+      <img src={DeleteIcon}
+        alt='delete-icon'
+        className='delete-icon'
+        onClick={deleteNote} />
 
-                <h3 className='note-card-title'> {title} </h3>
-                <p className='note-card-content'> {content} </p>
-                <span className='note-card-category'>{category}</span>
-                <img src={img} className='delete-icon' onClick={deleteNote}/>
-
-            </div>
-        </div>
-    )
+      <Link to={`/update/${_id}`}>
+        <img src={UpdateIcon}
+          alt='update-icon'
+          className='update-icon' />
+      </Link>
+    </div>
+  )
 }
 
 export default NoteCard

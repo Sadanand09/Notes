@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     element: <NewNote/>
   },
   {
-    path: "/update",
+    path: "/update/:id",
     element: <UpdateNote/>
   }
 ]);

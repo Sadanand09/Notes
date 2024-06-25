@@ -11,11 +11,8 @@ function Home() {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/notes`)
         setNotes(response.data.data);
 
-        loadNotes();
-
-
     }
-//trying to commit
+    
     useEffect(()=>{
         loadNotes();
     },[])
