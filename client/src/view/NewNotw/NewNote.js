@@ -4,7 +4,7 @@ import './NewNote.css'
 function NewNote() {
   return (
     <div>
-      NewNote
+        <h1 className='app-header'>NewNote</h1>
     </div>
   )
 }
