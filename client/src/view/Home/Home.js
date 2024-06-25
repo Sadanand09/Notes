@@ -12,10 +12,11 @@ function Home() {
 
 
     }
-
+//trying to commit
     useEffect(()=>{
         loadNotes();
     },[])
+
 
   return (
     <div>
