@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Home from './view/Home/Home';
-import NewNote from './view/NewNotw/NewNote';
+import NewNote from './view/NewNote/NewNote';
+import { Toaster } from 'react-hot-toast';
 
 const router = createBrowserRouter([
   {
@@ -17,9 +18,11 @@ const router = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+root.render(<>
   
+  <Toaster/>
   <RouterProvider router={router}/>
+  </>
   
 );
 
