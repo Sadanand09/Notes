@@ -5,6 +5,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Home from './view/Home/Home';
 import NewNote from './view/NewNote/NewNote';
 import { Toaster } from 'react-hot-toast';
+import UpdateNote from './view/UpdateNote/UpdateNote';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "/new",
     element: <NewNote/>
+  },
+  {
+    path: "/update",
+    element: <UpdateNote/>
   }
 ]);
 
